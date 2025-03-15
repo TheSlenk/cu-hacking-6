@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
 function Home() {
   return (
-    <div className="flex flex-col h-screen w-screen items-center justify-center bg-gray-100">
+    <div className="flex flex-col h-screen w-screen items-center justify-center bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
       <h1 className="text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
         Scroll.Ai
       </h1>
