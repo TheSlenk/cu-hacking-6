@@ -5,7 +5,7 @@ import StarryBackground from '../components/StarryBackground';
 
 function Home() {
   return (
-    <div className="flex flex-col h-screen w-screen items-center justify-center relative">
+    <div className="flex flex-col h-screen w-screen items-center justify-center relative overflow-hidden">
       <StarryBackground />
       <div className="flex flex-col items-center justify-center overflow-hidden">
         <div className="gap-12 w-[800px] fade-in h-[450px] bg-black/10 bg-blur-xl rounded-[65px] border-1 border-gray-400 backdrop-blur-xl flex flex-col justify-center items-center">
