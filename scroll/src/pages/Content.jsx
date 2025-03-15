@@ -21,10 +21,12 @@ function Content() {
       </div>
 
       {/* the video scroller content itself */}
-      <div className="flex-1 overflow-y-auto snap-y snap-mandatory h-full mt-16 mb-12">
-        {videos.map((video, index) => (
-          <div key={index} className="h-screen flex items-center justify-center bg-gray-100 snap-start w-full">
-            <div className="w-full h-full flex items-center">
+        <div className="flex-1 overflow-y-auto snap-y snap-mandatory h-full mt-16 mb-12">
+          {videos.map((video, index) => (
+            <div key={index} className="h-full flex items-center justify-center bg-gray-100 snap-start w-full">
+          <div className="w-full h-full flex items-center">
+            {/* TODO: remove this later, just for visual counting */}
+              <div>{index + 1}</div>
               <video controls autoPlay muted className="w-full h-full object-cover">
                 <source src={video} type="video/mp4" />
                 Your browser does not support the video tag.
