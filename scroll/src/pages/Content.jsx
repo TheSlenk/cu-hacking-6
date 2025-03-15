@@ -1,7 +1,7 @@
 import { FaHome, FaSearch, FaPlus, FaUser } from 'react-icons/fa';
 import '../App.css';
-
-const videos = ['../assets/sampleVideos/video1.mp4', '../assets/sampleVideos/video2.mp4'];
+import vid from '../assets/sampleVideos/sampleVideo1.mp4';
+const videos = ['../assets/sampleVideos/sampleVideo1.mp4', '../assets/sampleVideos/sampleVideo2.mp4'];
 
 function Content() {
   return (
@@ -35,7 +35,7 @@ function Content() {
               onLoadedData={() => console.log(`Video ${index + 1} loaded successfully`)}
               onError={() => console.error(`Error loading video ${index + 1}`)}
             >
-              <source src={video} type="video/mp4" />
+              <source src={vid} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
