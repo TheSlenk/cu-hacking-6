@@ -9,7 +9,7 @@ function Home() {
       <StarryBackground />
       <div className="flex flex-col items-center justify-center overflow-hidden">
         <div className="gap-12 w-[800px] fade-in h-[450px] bg-black/10 bg-blur-xl rounded-[65px] border-1 border-gray-400 backdrop-blur-xl flex flex-col justify-center items-center">
-          <div className="px-32 text-center z-10">
+          <div className="px-32 text-center z-10 max-h-[6rem] overflow-hidden">
             <DecryptedText
               className="text-4xl font-bold text-white"
               encryptedClassName="text-4xl font-bold text-white"
