@@ -1,5 +1,5 @@
-const useSpeechToText = ({ text }) => {
-    const handleSpeak = () => {
+const useSpeechToText = () => {
+    const handleSpeak = (text) => {
         if ('speechSynthesis' in window) {
             const utterance = new SpeechSynthesisUtterance(text);
             window.speechSynthesis.speak(utterance);
