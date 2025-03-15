@@ -1,5 +1,5 @@
 import { FaHome, FaSearch, FaPlus, FaUser } from 'react-icons/fa';
-import './App.css';
+import '../App.css';
 
 function Content() {
   return (
