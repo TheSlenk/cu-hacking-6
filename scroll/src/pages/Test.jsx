@@ -7,7 +7,7 @@ const Test = () => {
     return (
         <div>
             <h1>Test Component</h1>
-            <button onClick={handleSpeak("Hello this is a test")}>Speak</button>
+            <button className='bg-black' onClick={() => handleSpeak("Hello this is a test")}>Speak</button>
         </div>
     );
 };
