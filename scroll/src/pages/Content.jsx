@@ -11,7 +11,6 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import FaceStatus from './FaceStatus';
 
-
 function Content() {
   const [status, setStatus] = useState('Loading...');
 
@@ -79,6 +78,13 @@ function Content() {
     <div className="flex h-screen w-screen overflow-hidden flex-col items-center justify-center relative">
       {/* Background */}
       <StarryBackground />
+
+       {/* Video Feed Overlay */}
+       <img 
+          src="http://localhost:5000/video_feed" 
+          alt="Webcam Feed" 
+          className="absolute top-0 left-0 w-40 rounded-lg shadow-lg"
+        />
 
       {/* Video Content */}
       <div className='flex justify-center items-center w-[400px] h-[650px] relative'>
