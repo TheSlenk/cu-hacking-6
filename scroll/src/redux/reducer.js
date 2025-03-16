@@ -1,9 +1,10 @@
 // src/redux/reducer.js
-import { SET_IS_SPEAKING, SET_IS_PAUSED } from './actions';
+import { SET_IS_SPEAKING, SET_IS_PAUSED, SET_TOPIC } from './actions';
 
 const initialState = {
     isSpeaking: false,
     isPaused: false,
+    topic: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -17,6 +18,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 isPaused: action.payload,
+            };
+        case SET_TOPIC:
+            return {
+                ...state,
+                topic: action.payload,
             };
         default:
             return state;
