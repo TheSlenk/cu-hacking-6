@@ -8,6 +8,15 @@ app.get('/', (req, res) => {
     res.redirect('/home')
 })
 
+app.get('/generateJsonScript', (req, res) => {
+    const inputString = req.body;
+    if (!inputString) {
+        return res.status(400).send('Missing string in request body');
+    }
+    const generatedScript = generateJsonScript(inputString);
+    res.status(200).json({ script: generatedScript });
+});
+
 app.get('/home', homePageHandler)
 //#endregion
 
