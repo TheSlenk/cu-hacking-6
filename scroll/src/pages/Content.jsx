@@ -89,18 +89,12 @@ function Content() {
   return (
     <div className='flex'>
     <div className='flex flex-1'>
-      rhs
+      lhs
     </div>
     <div className="flex flex-1 h-screen w-screen overflow-hidden flex-col items-center justify-center relative bg-red-500">
       {/* Background */}
       <StarryBackground />
 
-       {/* Video Feed Overlay */}
-       {/* <img 
-          src="http://localhost:5000/video_feed" 
-          alt="Webcam Feed" 
-          className="absolute top-0 left-0 w-40 rounded-lg"
-        /> */}
       {/* Video Content */}
       <div className="flex justify-center items-center w-[400px] h-[650px] relative">
         <div className="flex-1 overflow-y-auto snap-y snap-mandatory h-full mt-16 mb-12 overflow-x-hidden rounded-3xl scrollbar-hidden bg-black">
@@ -139,6 +133,15 @@ function Content() {
                     <p className="text-white text-2xl font-bold">Look Here</p>
                   </div>
                 )}
+
+                {/* Start button */}
+                <div className='absolute top-4 w-full flex justify-center'>
+
+                  {/* Timed Speech Component */}
+                  {videoIndex === index && isSpeaking && (
+                    <TimedSpeech data={testData} />
+                  )}
+                </div>
               </div>
             </div>
           ))}
@@ -153,8 +156,13 @@ function Content() {
         <FaUser size={24} />
       </div> */}
     </div>
-    <div className='flex flex-1'>
-      lhs
+    <div className='flex flex-1 justify-center items-center'>
+      {/* Video Feed Overlay */}
+      <img 
+          src="http://localhost:5000/video_feed" 
+          alt="Webcam Feed" 
+          className="w-full object-cover rounded-lg"
+        />
     </div>
     </div>
   );
