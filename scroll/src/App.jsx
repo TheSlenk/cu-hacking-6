@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Content from './pages/Content';
 import Test from './pages/Test';
-import FacetrackTest from './pages/FacetrackTest';
+import FaceStatus from './pages/FaceStatus';
 import './App.css';
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route path="/content" element={<Content />} />
         <Route path="/test" element={<Test />} />
-        <Route path="/facetrackTest" element={<FacetrackTest />} />
+        <Route path="/facetrackTest" element={<FaceStatus />} />
       </Routes>
     </Router>
   );
