@@ -86,6 +86,15 @@ function Content() {
     }
   ];
   console.log(isPaused)
+  const [counter, setCounter] = useState(0);
+
+  // useEffect for updating counter when status changes to a specific condition
+  useEffect(() => {
+    if (status === "Looking Left" || status === "Looking Right") {
+      setCounter(prevCounter => prevCounter + 1);
+    }
+  }, [status]);
+
   return (
     <div className='flex'>
       <div className='flex flex-col flex-1 ml-6 mt-6'>
@@ -153,14 +162,8 @@ function Content() {
           <div className='ml-4'>Accounting</div>
         </div>
 
-
-        
-        
-
-        
-
       </div>
-      <div className="flex flex-1 h-screen w-screen overflow-hidden flex-col items-center justify-center relative bg-red-500">
+      <div className="flex flex-1 h-screen w-screen overflow-hidden flex-col items-center justify-center relative bg-white">
         {/* Background */}
       <StarryBackground />
 
@@ -217,21 +220,25 @@ function Content() {
         </div>
       </div>
 
+    </div>
+    <div className='flex flex-1 flex-col justify-center'>
+      {/* Video Feed Overlay */}
+      <img 
+          src="http://localhost:5000/video_feed" 
+          alt="Webcam Feed" 
+          className="w-full h-full object-cover"
+        />
+
       {/* Bottom Clicky bar for home stuff */}
-      {/* <div className="fixed bottom-0 w-full bg-gray-900 text-white flex justify-around p-3 z-10">
+      {/* <div className="w-full bg-gray-900 text-white flex justify-around p-3 z-10">
         <FaHome size={24} />
         <FaSearch size={24} />
         <FaPlus size={24} />
         <FaUser size={24} />
       </div> */}
-    </div>
-    <div className='flex flex-1 justify-center'>
-      {/* Video Feed Overlay */}
-      <img 
-          src="http://localhost:5000/video_feed" 
-          alt="Webcam Feed" 
-          className="w-full h-full object-cover rounded-lg"
-        />
+        <div className='items-center text-lg font-semibold text-center bg-gray-900 text-white'>
+          Distraction Counter: {counter} times
+        </div>
     </div>
     </div>
   );

@@ -96,7 +96,7 @@ def generate_frames():
                     cv2.line(frame, (start_x, start_y), (end_x, end_y), (0, 255, 0), 2)
 
         # Add status to the frame
-        cv2.putText(frame, face_direction_status, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+        # cv2.putText(frame, face_direction_status, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
 
         # Encode the frame to JPEG
         ret, buffer = cv2.imencode('.jpg', frame)
