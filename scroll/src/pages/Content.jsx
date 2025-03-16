@@ -28,7 +28,7 @@ export function Content() {
       const segments = window.location.pathname.split('/').filter(Boolean);
       const path = segments[1] || '';
       try {
-        const response = await axios.get(`http://localhost:5000/api${path}`);
+        const response = await axios.post(`http://localhost:8080/generateJsonScript`, { path });
         console.log("Fetched topic data:", response.data);
         setData(response.data);
         console.log("Fetching topic data for path:", path);
