@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setTopic } from '../redux/actions';
 import DecryptedText from '../components/DecryptedText';
@@ -10,6 +10,13 @@ function Home() {
   const topic = useSelector((state) => state.topic);
   const handleInputChange = (e) => {
     dispatch(setTopic(e.target.value));
+  };
+
+  const navigate = useNavigate();
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      navigate(`/content/${topic}`);
+    }
   };
 
   return (
@@ -30,6 +37,7 @@ function Home() {
             type="text"
             placeholder="I would like to learn about..."
             onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
             className="mt-3 w-[550px] p-4 border border-2 border-gray-300 text-white rounded-xl focus:outline-none"
           />
           <div className="flex space-x-4">

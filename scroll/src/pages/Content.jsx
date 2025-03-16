@@ -236,7 +236,7 @@ export function Content() {
                 )}
 
                 {/* Start button */}
-                <div className='absolute bottom-24 w-full flex justify-center'>
+                <div className='absolute bottom-60 w-full flex justify-center'>
 
                   {/* Timed Speech Component */}
                   {videoIndex === index && isSpeaking && (
