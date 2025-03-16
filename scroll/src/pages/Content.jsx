@@ -24,7 +24,20 @@ export function Content() {
   const isPaused = useSelector((state) => state.isPaused); // Redux state to track paused status
   const topic = useSelector((state) => state.topic); // Redux state to track current topic
 
+  // useEffect for fetching face status
   useEffect(() => {
+    const fetchFaceStatus = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/face-status');
+        setStatus(response.data.status);
+      } catch (error) {
+        console.error('Error fetching face status:', error);
+        setStatus('Error fetching face status');
+      }
+    };
+
+    const interval = setInterval(fetchFaceStatus, 1000);
+    
     const fetchTopicData = async () => {
       const segments = window.location.pathname.split('/').filter(Boolean);
       const path = segments[1] || '';
@@ -40,20 +53,7 @@ export function Content() {
     };
 
     fetchTopicData();
-  }, []);
-  // useEffect for fetching face status
-  useEffect(() => {
-    const fetchFaceStatus = async () => {
-      try {
-        const response = await axios.get('http://localhost:5000/face-status');
-        setStatus(response.data.status);
-      } catch (error) {
-        console.error('Error fetching face status:', error);
-        setStatus('Error fetching face status');
-      }
-    };
 
-    const interval = setInterval(fetchFaceStatus, 1000);
     return () => clearInterval(interval);
   }, []);
 
