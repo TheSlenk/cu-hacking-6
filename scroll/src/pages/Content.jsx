@@ -10,6 +10,7 @@ import TimedSpeech from '../components/TimedSpeech';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import FaceStatus from './FaceStatus';
+import dingSound from "../assets/BellSound.mp3";
 
 function Content() {
   const [status, setStatus] = useState('Loading...');
@@ -29,6 +30,14 @@ function Content() {
     const interval = setInterval(fetchFaceStatus, 1000);
     return () => clearInterval(interval);
   }, []);
+
+   // Play a sound when the status changes to a specific condition
+   useEffect(() => {
+    if (status === "Looking Left" || status === "Looking Right") {
+      const sound = new Audio(dingSound);
+      sound.play().catch(error => console.error("Error playing sound:", error));
+    }
+  }, [status]); // Runs when `status` changes
 
   const dispatch = useDispatch();
   const [videoIndex, setVideoIndex] = useState(null); // Track which video is playing
@@ -105,6 +114,7 @@ function Content() {
                   Your browser does not support the video tag.
                 </video>
 
+                {/* Overlay for "Look Here" */}
                 {(status === 'Looking Left' || status === 'Looking Right') && (
                   <div className="absolute top-0 left-0 w-full h-full bg-yellow-300 bg-opacity-75 flex items-center justify-center">
                     <p className="text-white text-2xl font-bold">Look Here</p>
