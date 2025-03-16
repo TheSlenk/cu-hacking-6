@@ -2,7 +2,7 @@ const fs = require('fs')
 const { exec } = require('child_process')
 const { error } = require('console')
 
-function generateScript(subject) {
+export function generateScript(subject) {
     const LOCATION = 'us-central1'
     const PROJECT_ID = 'cu-hacking-6'
     const MODEL_ID = 'gemini-2.0-flash-001'
@@ -46,8 +46,7 @@ function generateScript(subject) {
 
 }
 
-
-function generateImage(subject) {
+export function generateImage(subject) {
     const PROJECT_ID = "cu-hacking-6"
     const LOCATION_ID = "us-central1"
     const API_ENDPOINT = "us-central1-aiplatform.googleapis.com"
