@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setTopic } from '../redux/actions';
 import DecryptedText from '../components/DecryptedText';
 import StarryBackground from '../components/StarryBackground';
+import Navbar from '../components/Navbar';
 
 function Home() {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ function Home() {
   return (
     <div className="flex flex-col h-screen w-screen items-center justify-center relative overflow-hidden">
       <StarryBackground />
+      <Navbar></Navbar>
       <div className="flex flex-col items-center justify-center overflow-hidden">
         <div className="gap-12 w-[850px] fade-in h-[500px] bg-black/10 bg-blur-xl rounded-[65px] border-1 border-gray-400 backdrop-blur-xl flex flex-col justify-center items-center">
           <div className="px-32 text-center z-10 overflow-hidden">
