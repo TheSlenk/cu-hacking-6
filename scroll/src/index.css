@@ -12,3 +12,8 @@
 .fade-in {
   animation: fadeIn 1s ease-in-out forwards;
 }
+
+.text-outline {
+  color: white; /* Text color */
+  text-shadow: 2px 2px 4px black, -2px -2px 4px black, 2px -2px 4px black, -2px 2px 4px black; /* Black outline */
+}

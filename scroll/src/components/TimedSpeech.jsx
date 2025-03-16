@@ -92,7 +92,7 @@ const TimedSpeech = ({ data }) => {
           {data[currentIndex]?.image && (
             <img src={decodeImage(data[currentIndex].image)} alt="image supposed to be here" />
           )}
-          <p className="text-2xl text-white font-semibold">
+          <p className="text-2xl text-white font-semibold text-outline">
             {data[currentIndex]?.text}
           </p>
         </div>

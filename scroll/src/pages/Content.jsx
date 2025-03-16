@@ -4,8 +4,9 @@ import vid1 from '../assets/sampleVideos/minecraft.mp4';
 import vid2 from '../assets/sampleVideos/minecraft2.mp4';
 import vid3 from '../assets/sampleVideos/sub1.mp4';
 import vid4 from '../assets/sampleVideos/sub2.mp4';
+import vid5 from '../assets/sampleVideos/lebron.mp4';
+const videos = [vid4, vid3, vid1, vid2, vid5].sort(() => Math.random() - 0.5);
 
-const videos = [vid1, vid2, vid3, vid4];
 import StarryBackground from '../components/StarryBackground';
 import { useDispatch, useSelector } from "react-redux";
 import { setIsPaused, setIsSpeaking } from "../redux/actions";
@@ -194,8 +195,6 @@ export function Content() {
 
       </div>
       <div className="flex flex-1 h-screen w-screen overflow-hidden flex-col items-center justify-center relative bg-white">
-        {/* Background */}
-      <StarryBackground />
 
       {/* Video Content */}
       <div className="flex justify-center items-center w-[400px] h-[650px] relative">
@@ -237,7 +236,7 @@ export function Content() {
                 )}
 
                 {/* Start button */}
-                <div className='absolute bottom-24 w-full flex justify-center'>
+                <div className='absolute bottom-60 w-full flex justify-center'>
 
                   {/* Timed Speech Component */}
                   {videoIndex === index && isSpeaking && (
