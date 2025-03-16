@@ -14,6 +14,7 @@ import FaceStatus from './FaceStatus';
 import dingSound from "../assets/BellSound.mp3";
 import "./Content.css";
 import { Link } from "react-router";
+import FocusBuddy from '/focusbuddy.png';
 
 export function Content() {
   const [status, setStatus] = useState('Loading...');
@@ -122,7 +123,10 @@ export function Content() {
           <div className='hover:bg-gray-200 rounded'>
             <FaBars size={24} />
           </div>
-          <div className='ml-4 text-2xl font-semibold'>Scroll.Ai</div>
+          <div className='flex gap-4'>
+            <div className='ml-4 text-2xl font-semibold'>Focus Buddy</div>
+            <img className="w-8" src={FocusBuddy} alt="logo" />
+          </div>
         </div>
         <Link to={`/`} className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
           <FaHome size={16} className='ml-1 mr-1' />
