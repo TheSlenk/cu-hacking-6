@@ -75,15 +75,30 @@ def generate_frames():
                     (13, 14), (14, 15), (15, 16),
                     
                     # Eyebrows (landmarks 17 to 26)
-                    (17, 18), (18, 19), (19, 20), (20, 21), (21, 22), 
-                    (22, 23), (23, 24), (24, 25), (25, 26),
+                    # (17, 18), (18, 19), (19, 20), (20, 21), (21, 22), 
+                    # (22, 23), (23, 24), (24, 25), (25, 26),
                     
-                    # Eyes (landmarks 33 to 133 for left, 362 to 263 for right)
-                    (33, 133), (133, 7), (7, 163), (163, 246), (246, 392), 
-                    (392, 144), (144, 145), (145, 153), (153, 154),
+                    # Left eye (landmarks 33 to 133)
+                    (33, 133), (133, 160), (160, 159), (159, 158), (158, 157), 
+                    (157, 173), (173, 133), (133, 7), (7, 163), (163, 144), 
+                    (144, 145), (145, 153), (153, 154), (154, 155), (155, 133),
                     
-                    # Nose and mouth connections (specific landmark indices)
-                    (1, 5), (5, 6), (6, 7), (7, 8), (8, 9)
+                    # Right eye (landmarks 362 to 263)
+                    (362, 398), (398, 384), (384, 385), (385, 386), (386, 387), 
+                    (387, 388), (388, 466), (466, 263), (263, 249), (249, 390), 
+                    (390, 373), (373, 374), (374, 380), (380, 381), (381, 382), 
+                    (382, 362),
+                    
+                    # Nose (landmarks 1 to 5)
+                    (1, 2), (2, 3), (3, 4), (4, 5),
+                    
+                    # Mouth (landmarks 61 to 291)
+                    (61, 146), (146, 91), (91, 181), (181, 84), (84, 17), 
+                    (17, 314), (314, 405), (405, 321), (321, 375), (375, 291),
+                    
+                    # Inner mouth (landmarks 78 to 308)
+                    # (78, 95), (95, 88), (88, 178), (178, 87), (87, 14), 
+                    # (14, 317), (317, 402), (402, 318), (318, 324), (324, 308)
                 ]
 
                 # Draw the lines between landmarks based on defined connections
@@ -137,7 +152,7 @@ def get_face_status():
         for face_landmarks in results.multi_face_landmarks:
             # Get key face points
             h, w, _ = frame.shape
-            nose_tip = face_landmarks.landmark[1]  # Nose tip
+            nose_tip = face_landmarks.landmark[4]  # Nose tip
             left_cheek = face_landmarks.landmark[234]  # Left cheek
             right_cheek = face_landmarks.landmark[454]  # Right cheek
 

@@ -246,19 +246,19 @@ export function Content() {
       </div>
 
     </div>
-    <div className='flex flex-1 flex-col justify-center'>
-        <div className='items-center text-lg font-semibold text-center bg-gray-900 text-white'>
+    <div className='flex flex-1 flex-col justify-center pr-8'>
+        <div className='items-center text-lg font-semibold text-center bg-gray-900 text-white py-2 rounded-tl-3xl rounded-tr-3xl'>
           Distraction Counter: {counter} times
         </div>
       
       {/* Video Feed Overlay */}
-      <img 
-          src="http://localhost:5000/video_feed" 
-          alt="Webcam Feed" 
-          className="w-full h-full object-cover"
-        />
+        <img 
+            src="http://localhost:5000/video_feed" 
+            alt="Webcam Feed" 
+            className="w-full h-100vh object-cover rounded-bl-3xl rounded-br-3xl"
+          />
 
-      {/* Bottom Clicky bar for home stuff */}
+        {/* Bottom Clicky bar for home stuff */}
       {/* <div className="w-full bg-gray-900 text-white flex justify-around p-3 z-10">
         <FaHome size={24} />
         <FaSearch size={24} />
