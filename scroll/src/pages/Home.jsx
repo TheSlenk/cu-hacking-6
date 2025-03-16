@@ -30,7 +30,7 @@ function Home() {
             <DecryptedText
               className="text-4xl font-bold text-white"
               encryptedClassName="text-4xl font-bold text-white"
-              text="Welcome to Scroll... your new AI learning platform"
+              text="Introducing Focus Buddy... your new AI Pal for unstoppable learning!"
               animateOn="view"
               revealDirection="center"
             />

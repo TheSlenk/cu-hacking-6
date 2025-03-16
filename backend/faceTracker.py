@@ -2,6 +2,7 @@ from flask import Flask, Response, jsonify
 from flask_cors import CORS  # Import CORS
 import cv2
 import mediapipe as mp
+import time
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -18,6 +19,10 @@ cap = cv2.VideoCapture(0)
 
 # Threshold to determine turning head
 THRESHOLD = 30  # Adjust this if needed
+
+# Global variable to store the last request time
+last_request_time = time.time()
+timeout_interval = 1  # Timeout interval in seconds (e.g., 1 second)
 
 def generate_frames():
     while True:
@@ -93,14 +98,10 @@ def generate_frames():
                     (1, 2), (2, 3), (3, 4), (4, 5),
                     
                     # Mouth (landmarks 61 to 291)
-                    (61, 146), (146, 91), (91, 181), (181, 84), (84, 17), 
-                    (17, 314), (314, 405), (405, 321), (321, 375), (375, 291),
-                    
-                    # Inner mouth (landmarks 78 to 308)
-                    # (78, 95), (95, 88), (88, 178), (178, 87), (87, 14), 
-                    # (14, 317), (317, 402), (402, 318), (318, 324), (324, 308)
+                    # (61, 146), (146, 91), (91, 181), (181, 84), (84, 17), 
+                    # (17, 314), (314, 405), (405, 321), (321, 375), (375, 291),
                 ]
-
+                
                 # Draw the lines between landmarks based on defined connections
                 for start, end in connections:
                     start_point = face_landmarks.landmark[start]
@@ -113,9 +114,6 @@ def generate_frames():
                     # Draw the line
                     cv2.line(frame, (start_x, start_y), (end_x, end_y), (0, 255, 0), 2)
 
-        # Add status to the frame
-        # cv2.putText(frame, face_direction_status, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
-
         # Encode the frame to JPEG
         ret, buffer = cv2.imencode('.jpg', frame)
         if not ret:
@@ -125,7 +123,7 @@ def generate_frames():
         # Yield the frame in a proper MJPEG format
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
-
+        
 
 @app.route('/video_feed')
 def video_feed():
@@ -134,6 +132,17 @@ def video_feed():
 
 @app.route('/face-status', methods=['GET'])
 def get_face_status():
+    global last_request_time
+
+    # Check if the time interval has passed
+    current_time = time.time()
+    if current_time - last_request_time < timeout_interval:
+        # If not, return a message indicating to wait
+        return jsonify({'error': 'Please wait before making another request'}), 429
+
+    # Update last request time
+    last_request_time = current_time
+
     # Capture frame from webcam
     ret, frame = cap.read()
     if not ret:
