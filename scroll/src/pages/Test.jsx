@@ -1,6 +1,6 @@
 import React from 'react';
 import useSpeechToText from '../components/useSpeechToText';
-import Interaction from '../components/Interaction';
+import Interaction from '../components/TimedSpeech';
 
 const testData = [
   {
