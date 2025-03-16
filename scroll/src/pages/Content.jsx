@@ -124,10 +124,12 @@ export function Content() {
           </div>
           <div className='ml-4 text-2xl font-semibold'>Scroll.Ai</div>
         </div>
-        <div className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
-          <FaHome size={16} className='ml-1 mr-1' />
-          <div className='ml-4'>Home</div>
-        </div>
+        <Link to="/">
+          <div className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
+              <FaHome size={16} className='ml-1 mr-1' />
+              <div className='ml-4'>Home</div>
+          </div>
+        </Link>
         <div className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
           <FaSearch size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Search</div>
