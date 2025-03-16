@@ -17,7 +17,7 @@ app.get('/generateJsonScript', (req, res) => {
     res.status(200).json({ script: generatedScript });
 });
 
-app.get('/home', homePageHandler)
+app.post('/home', homePageHandler)
 //#endregion
 
 console.log(`Listening on port ${PORT}...`)
