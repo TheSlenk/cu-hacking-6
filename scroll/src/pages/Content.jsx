@@ -140,50 +140,52 @@ export function Content() {
         <div className='flex items-center mt-6 mb-3 text-lg font-semibold'>
           Explore Topics
         </div>
-        <Link to='/content/programming' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
+        <Link to='/content/web%20development' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
             <FaCode size={16} className='ml-1 mr-1' />
-            <div className='ml-4'>Programming</div>
-          {/* </Link> */}
+            <div className='ml-4'>Web Development</div>
         </Link>
-        <Link to='/content/algorithms' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
+        <Link to='/content/data%20structures' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
           <FaCode size={16} className='ml-1 mr-1' />
-          <div className='ml-4'>Algorithms</div>
+          <div className='ml-4'>Data Structures</div>
         </Link>
         <Link to='/content/embedded%20systems' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
           <FaCode size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Embedded Systems</div>
         </Link>
 
-        <Link to='/content/calculus' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
+        <Link to='/content/integral%20calculus' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
           <FaCalculator size={16} className='ml-1 mr-1' />
-          <div className='ml-4'>Calculus</div>
+          <div className='ml-4'>Integral Calculus</div>
         </Link>
-        <Link to='/content/linear%20algebra' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
+        <Link to='/content/matrix%20theory' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
           <FaCalculator size={16} className='ml-1 mr-1' />
-          <div className='ml-4'>Linear Algebra</div>
+          <div className='ml-4'>Matrix Theory</div>
         </Link>
-        <Link to='/content/statistics'  className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
+        <Link to='/content/probability%20theory'  className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
           <FaCalculator size={16} className='ml-1 mr-1' />
-          <div className='ml-4'>Statistics</div>
+          <div className='ml-4'>Probability Theory</div>
         </Link>
 
-        <Link to='/content/psychology' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded'>
+        <Link to='/content/cognitive%20behavioral%20psychology' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded'>
           <FaPeopleArrows size={16} className='ml-1 mr-1' />
-          <div className='ml-4'>Psychology</div>
-        </Link>
-        <Link to='/content/anthropology' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded'>
-          <FaPeopleArrows size={16} className='ml-1 mr-1' />
-          <div className='ml-4'>Anthropology</div>
-        </Link>
-        <Link to='/content/sociology'  className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded'>
-          <FaPeopleArrows size={16} className='ml-1 mr-1' />
-          <div className='ml-4'>Sociology</div>
+          <div className='ml-4'>Cognitive Behavioral Psychology</div>
         </Link>
 
-        <Link to='/content/accounting' className='flex items-center mb-2 text-lg hover:bg-gray-200 rounded'>
+        <Link to='/content/evolutionary%20anthropology' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded'>
+          <FaPeopleArrows size={16} className='ml-1 mr-1' />
+          <div className='ml-4'>Evolutionary Anthropology</div>
+        </Link>
+
+        <Link to='/content/critical%20social%20theory' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded'>
+          <FaPeopleArrows size={16} className='ml-1 mr-1' />
+          <div className='ml-4'>Critical Social Theory</div>
+        </Link>
+
+        <Link to='/content/forensic%20accounting' className='flex items-center mb-2 text-lg hover:bg-gray-200 rounded'>
           <FaMoneyBill size={16} className='ml-1 mr-1' />
-          <div className='ml-4'>Accounting</div>
+          <div className='ml-4'>Forensic Accounting</div>
         </Link>
+
 
       </div>
       <div className="flex flex-1 h-screen w-screen overflow-hidden flex-col items-center justify-center relative bg-white">
@@ -245,6 +247,10 @@ export function Content() {
 
     </div>
     <div className='flex flex-1 flex-col justify-center'>
+        <div className='items-center text-lg font-semibold text-center bg-gray-900 text-white'>
+          Distraction Counter: {counter} times
+        </div>
+      
       {/* Video Feed Overlay */}
       <img 
           src="http://localhost:5000/video_feed" 
@@ -259,9 +265,7 @@ export function Content() {
         <FaPlus size={24} />
         <FaUser size={24} />
       </div> */}
-        <div className='items-center text-lg font-semibold text-center bg-gray-900 text-white'>
-          Distraction Counter: {counter} times
-        </div>
+        
     </div>
     </div>
   );
