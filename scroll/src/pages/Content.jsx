@@ -1,4 +1,4 @@
-import { FaHome, FaSearch, FaPlus, FaUser, FaBars, FaHistory, FaCode, FaCalculator, FaPeopleArrows, FaMoneyBill } from 'react-icons/fa';
+import { FaHome, FaSearch, FaPlus, FaUser, FaBars, FaHistory, FaCode, FaCalculator, FaPeopleArrows, FaMoneyBill, FaLeaf } from 'react-icons/fa';
 import '../App.css';
 import vid1 from '../assets/sampleVideos/minecraft.mp4';
 import vid2 from '../assets/sampleVideos/minecraft2.mp4';
@@ -168,10 +168,10 @@ export function Content() {
           <FaCalculator size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Matrix Theory</div>
         </Link>
-        <Link to={`/content/probability theory`}  className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96' onClick={() => window.location.href = `/content/probability theory`}>
-          <FaCalculator size={16} className='ml-1 mr-1' />
-          <div className='ml-4'>Probability Theory</div>
-        </Link>
+        <Link to={`/content/plant biology`}  className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96' onClick={() => window.location.href = `/content/plant biology`}>
+          <FaLeaf size={16} className='ml-1 mr-1' />
+          <div className='ml-4'>Plant Biology</div>
+        </Link>        
 
         <Link to={`/content/cognitive behavioral psychology`} className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded' onClick={() => window.location.href = `/content/cognitive behavioral psychology`}>
           <FaPeopleArrows size={16} className='ml-1 mr-1' />
