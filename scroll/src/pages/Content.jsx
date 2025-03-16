@@ -101,18 +101,20 @@ export function Content() {
     <div className='flex'>
       <div className='flex flex-col flex-1 ml-6 mt-6'>
         <div className='flex mb-8 items-center'>
-          <FaBars size={24} />
+          <div className='hover:bg-gray-200 rounded'>
+            <FaBars size={24} />
+          </div>
           <div className='ml-4 text-2xl font-semibold'>Scroll.Ai</div>
         </div>
-        <div className='flex items-center mb-3 text-lg'>
+        <div className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
           <FaHome size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Home</div>
         </div>
-        <div className='flex items-center mb-3 text-lg'>
+        <div className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
           <FaSearch size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Search</div>
         </div>
-        <div className='flex items-center mb-3 text-lg'>
+        <div className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
           <FaHistory size={16} className='ml-1 mr-1' />
           <div className='ml-4'>History</div>
         </div>
@@ -120,46 +122,46 @@ export function Content() {
         <div className='flex items-center mt-6 mb-3 text-lg font-semibold'>
           Explore Topics
         </div>
-        <div className='flex items-center mb-3 text-lg'>
+        <div className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
           <FaCode size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Programming</div>
         </div>
-        <div className='flex items-center mb-3 text-lg'>
+        <div className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
           <FaCode size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Data Structures & Algorithms</div>
         </div>
-        <div className='flex items-center mb-3 text-lg'>
+        <div className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
           <FaCode size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Embedded Systems</div>
         </div>
 
-        <div className='flex items-center mb-3 text-lg'>
+        <div className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
           <FaCalculator size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Calculus</div>
         </div>
-        <div className='flex items-center mb-3 text-lg'>
+        <div className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
           <FaCalculator size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Linear Algebra</div>
         </div>
-        <div className='flex items-center mb-3 text-lg'>
+        <div className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
           <FaCalculator size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Statistics</div>
         </div>
 
-        <div className='flex items-center mb-3 text-lg'>
+        <div className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded'>
           <FaPeopleArrows size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Psychology</div>
         </div>
-        <div className='flex items-center mb-3 text-lg'>
+        <div className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded'>
           <FaPeopleArrows size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Anthropology</div>
         </div>
-        <div className='flex items-center mb-3 text-lg'>
+        <div className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded'>
           <FaPeopleArrows size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Sociology</div>
         </div>
 
-        <div className='flex items-center mb-2 text-lg'>
+        <div className='flex items-center mb-2 text-lg hover:bg-gray-200 rounded'>
           <FaMoneyBill size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Accounting</div>
         </div>

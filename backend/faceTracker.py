@@ -17,13 +17,16 @@ face_mesh = mp_face_mesh.FaceMesh(min_detection_confidence=0.5, min_tracking_con
 cap = cv2.VideoCapture(0)
 
 # Threshold to determine turning head
-THRESHOLD = 40  # Adjust this if needed
+THRESHOLD = 30  # Adjust this if needed
 
 def generate_frames():
     while True:
         ret, frame = cap.read()
         if not ret:
             break
+
+        # Flip the frame horizontally
+        frame = cv2.flip(frame, 1)
 
         # Convert BGR to RGB (MediaPipe requires RGB format)
         rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
@@ -120,6 +123,9 @@ def get_face_status():
     ret, frame = cap.read()
     if not ret:
         return jsonify({'error': 'Failed to capture frame'}), 500
+
+    # Flip the frame horizontally
+    frame = cv2.flip(frame, 1)
 
     # Convert BGR to RGB (MediaPipe requires RGB format)
     rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
