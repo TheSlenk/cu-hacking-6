@@ -3,6 +3,35 @@ import { useSelector, useDispatch } from "react-redux";
 import useSpeechToText from "./useSpeechToText";
 
 const TimedSpeech = ({ data }) => {
+
+  const decodeImage = (imageData, mimeType = 'image/png') => {
+    if (typeof imageData === 'string') {
+      // Strip unnecessary parts if they exist
+      const base64Match = imageData.match(/([A-Za-z0-9+/=]+)$/);
+      if (base64Match) {
+        return `data:${mimeType};base64,${base64Match[1]}`;
+      }
+    }
+  
+    if (Array.isArray(imageData) || imageData instanceof Uint8Array) {
+      const binaryString = new Uint8Array(imageData).reduce(
+        (data, byte) => data + String.fromCharCode(byte),
+        ''
+      );
+      const base64String = btoa(binaryString);
+      return `data:${mimeType};base64,${base64String}`;
+    }
+  
+    if (typeof Buffer !== 'undefined' && Buffer.isBuffer(imageData)) {
+      const base64String = imageData.toString('base64');
+      return `data:${mimeType};base64,${base64String}`;
+    }
+  
+    console.warn('Unsupported image data type');
+    return '';
+  };
+  
+  
   const [currentIndex, setCurrentIndex] = useState(0);
   const isSpeaking = useSelector((state) => state.isSpeaking);
   const isPaused = useSelector((state) => state.isPaused);
@@ -65,7 +94,17 @@ const TimedSpeech = ({ data }) => {
 
   return (
     <div className="flex flex-col items-center p-4 text-center">
-      {isSpeaking && <p className="text-2xl text-white font-semibold">{data[currentIndex]?.text}</p>}
+    {isSpeaking && (
+      <div>
+        {data[currentIndex]?.image && (
+          <img src={decodeImage(data[currentIndex].image)} alt="image supposed to be here" />
+        )}
+        <p className="text-2xl text-white font-semibold">
+          {data[currentIndex]?.text}
+        </p>
+
+      </div>
+    )}
     </div>
   );
 };

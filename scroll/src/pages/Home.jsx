@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setTopic } from '../redux/actions';
 import DecryptedText from '../components/DecryptedText';
 import StarryBackground from '../components/StarryBackground';
 
 function Home() {
   const dispatch = useDispatch();
-
+  const topic = useSelector((state) => state.topic);
   const handleInputChange = (e) => {
     dispatch(setTopic(e.target.value));
   };
@@ -17,7 +17,7 @@ function Home() {
       <StarryBackground />
       <div className="flex flex-col items-center justify-center overflow-hidden">
         <div className="gap-12 w-[850px] fade-in h-[500px] bg-black/10 bg-blur-xl rounded-[65px] border-1 border-gray-400 backdrop-blur-xl flex flex-col justify-center items-center">
-          <div className="px-32 text-center z-10 max-h-[6rem] overflow-hidden">
+          <div className="px-32 text-center z-10 overflow-hidden">
             <DecryptedText
               className="text-4xl font-bold text-white"
               encryptedClassName="text-4xl font-bold text-white"
@@ -33,7 +33,7 @@ function Home() {
             className="mt-3 w-[550px] p-4 border border-2 border-gray-300 text-white rounded-xl focus:outline-none"
           />
           <div className="flex space-x-4">
-            <Link to="/content" className="px-6 py-2 bg-white rounded-lg">
+            <Link to={`/content/${topic}`} className="px-6 py-2 bg-white rounded-lg">
               Search
             </Link>
           </div>

@@ -10,7 +10,7 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/content" element={<Content />} />
+        <Route path="/content/:topic" element={<Content />} />
         <Route path="/test" element={<Test />} />
         <Route path="/facetrackTest" element={<FaceStatus />} />
       </Routes>

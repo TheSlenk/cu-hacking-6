@@ -16,7 +16,30 @@ import "./Content.css";
 
 export function Content() {
   const [status, setStatus] = useState('Loading...');
+  const [data, setData] = useState(null);
+  const dispatch = useDispatch();
+  const [videoIndex, setVideoIndex] = useState(null); // Track which video is playing
+  const isSpeaking = useSelector((state) => state.isSpeaking); // Redux state to track speaking status
+  const isPaused = useSelector((state) => state.isPaused); // Redux state to track paused status
+  const topic = useSelector((state) => state.topic); // Redux state to track current topic
 
+  useEffect(() => {
+    const fetchTopicData = async () => {
+      const segments = window.location.pathname.split('/').filter(Boolean);
+      const path = segments[1] || '';
+      try {
+        const response = await axios.get(`http://localhost:5000/api${path}`);
+        console.log("Fetched topic data:", response.data);
+        setData(response.data);
+        console.log("Fetching topic data for path:", path);
+        // Add additional handling for the fetched data here if needed
+      } catch (error) {
+        console.error("Error fetching topic data:", error);
+      }
+    };
+
+    fetchTopicData();
+  }, []);
   // useEffect for fetching face status
   useEffect(() => {
     const fetchFaceStatus = async () => {
@@ -41,13 +64,6 @@ export function Content() {
       }
     }, [status]); // Runs when `status` changes
 
-
-  const dispatch = useDispatch();
-  const [videoIndex, setVideoIndex] = useState(null); // Track which video is playing
-  const isSpeaking = useSelector((state) => state.isSpeaking); // Redux state to track speaking status
-  const isPaused = useSelector((state) => state.isPaused); // Redux state to track paused status
-  const topic = useSelector((state) => state.topic); // Redux state to track current topic
-
   const startVideo = (index) => {
     if (!isSpeaking) { // Check if it's already speaking
       dispatch(setIsSpeaking(true));
@@ -59,7 +75,8 @@ export function Content() {
     {
       "text": "Let's talk about the incredible world of photosynthesis!",
       "time": 0,
-      "image": "A vibrant green leaf with sunlight shining on it."
+      // A test base64 image (a small red dot PNG)
+      "image": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z/C/HwAGgwJ/lAq5VAAAAABJRU5ErkJggg=="
     },
     {
       "text": "Plants use sunlight, water, and carbon dioxide...",
@@ -69,12 +86,12 @@ export function Content() {
     {
       "text": "...to create their own food and release oxygen, the air we breathe.",
       "time": 10,
-      "image": "A simplified diagram of the photosynthesis process, showing inputs and outputs."
+      "image": null
     },
     {
       "text": "This process happens in tiny organelles called chloroplasts, found in plant cells.",
       "time": 17,
-      "image": "Close up of a plant cell with chloroplasts highlighted."
+      "image": null
     },
     {
       "text": "Inside, chlorophyll absorbs sunlight, powering the conversion of CO2 and water into sugars.",
