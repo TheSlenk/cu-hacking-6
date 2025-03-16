@@ -46,7 +46,14 @@ export function Content() {
       const segments = window.location.pathname.split('/').filter(Boolean);
       const path = segments[1] || '';
       try {
-        const response = await axios.post(`http://localhost:8080/generateJsonScript`, { path });
+        const response = await fetch(`http://localhost:8080/home`, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ path })
+        });
         console.log("Fetched topic data:", response.data);
         setData(response.data);
         console.log("Fetching topic data for path:", path);
@@ -239,9 +246,9 @@ export function Content() {
                 <div className='absolute bottom-60 w-full flex justify-center'>
 
                   {/* Timed Speech Component */}
-                  {videoIndex === index && isSpeaking && (
-                    <TimedSpeech data={testData} />
-                  )}
+                  {videoIndex === index && isSpeaking && data &&(
+                    <TimedSpeech data={data} />
+                  ) || <h2> Loading </h2>}
                 </div>
               </div>
             </div>
