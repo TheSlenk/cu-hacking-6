@@ -7,9 +7,30 @@ import StarryBackground from '../components/StarryBackground';
 import { useDispatch, useSelector } from "react-redux";
 import { setIsSpeaking } from "../redux/actions";
 import TimedSpeech from '../components/TimedSpeech';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import FaceStatus from './FaceStatus';
+
 
 function Content() {
+  const [status, setStatus] = useState('Loading...');
+
+  // useEffect for fetching face status
+  useEffect(() => {
+    const fetchFaceStatus = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/face-status');
+        setStatus(response.data.status);
+      } catch (error) {
+        console.error('Error fetching face status:', error);
+        setStatus('Error fetching face status');
+      }
+    };
+
+    const interval = setInterval(fetchFaceStatus, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   const dispatch = useDispatch();
   const [videoIndex, setVideoIndex] = useState(null); // Track which video is playing
   const isSpeaking = useSelector((state) => state.isSpeaking); // Redux state to track speaking status
@@ -77,6 +98,12 @@ function Content() {
                   <source src={video} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
+
+                {(status === 'Looking Left' || status === 'Looking Right') && (
+                  <div className="absolute top-0 left-0 w-full h-full bg-yellow-300 bg-opacity-75 flex items-center justify-center">
+                    <p className="text-white text-2xl font-bold">Look Here</p>
+                  </div>
+                )}
 
                 {/* Start button */}
                 <div className='absolute bottom-4 w-full flex justify-center'>
