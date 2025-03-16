@@ -65,7 +65,7 @@ const TimedSpeech = ({ data }) => {
 
   return (
     <div className="flex flex-col items-center p-4 text-center">
-      {isSpeaking && <p className="text-lg font-semibold mb-4">{data[currentIndex]?.text}</p>}
+      {isSpeaking && <p className="text-2xl text-white font-semibold">{data[currentIndex]?.text}</p>}
     </div>
   );
 };
