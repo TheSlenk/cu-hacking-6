@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import dingSound from "../assets/BellSound.mp3";
 
 const FaceStatus = () => {
   const [status, setStatus] = useState('Loading...');
+
+       // Play a sound when the status changes to a specific condition
+       useEffect(() => {
+        if (status === "Looking Left" || status === "Looking Right") {
+          const sound = new Audio(dingSound);
+          sound.play().catch(error => console.error("Error playing sound:", error));
+        }
+      }, [status]); // Runs when `status` changes
 
   useEffect(() => {
     const fetchFaceStatus = async () => {
@@ -13,7 +22,7 @@ const FaceStatus = () => {
         console.error('Error fetching face status:', error);
         setStatus('Error fetching face status');
       }
-    };
+    };  
 
     const interval = setInterval(fetchFaceStatus, 1000);
     return () => clearInterval(interval);
@@ -22,7 +31,7 @@ const FaceStatus = () => {
   return (
     <div className="relative">
       {/* Video feed */}
-      {/* <img src="http://localhost:5000/video_feed" alt="Webcam Feed" className="w-full h-auto" /> */}
+      <img src="http://localhost:5000/video_feed" alt="Webcam Feed" className="w-full h-auto" />
 
       {/* Overlay for "Look Here" */}
       {(status === 'Looking Left' || status === 'Looking Right') && (
@@ -32,7 +41,9 @@ const FaceStatus = () => {
       )}
 
       {/* Status Text */}
-      {/* <h1 className="mt-4 text-xl">Face Status: {status}</h1> */}
+      <h1 className="mt-4 text-xl">Face Status: {status}</h1>
+
+
     </div>
   );
 };

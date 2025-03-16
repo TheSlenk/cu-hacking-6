@@ -31,13 +31,14 @@ function Content() {
     return () => clearInterval(interval);
   }, []);
 
-   // Play a sound when the status changes to a specific condition
-   useEffect(() => {
-    if (status === "Looking Left" || status === "Looking Right") {
-      const sound = new Audio(dingSound);
-      sound.play().catch(error => console.error("Error playing sound:", error));
-    }
-  }, [status]); // Runs when `status` changes
+    // Play a sound when the status changes to a specific condition
+    useEffect(() => {
+      if (status === "Looking Left" || status === "Looking Right") {
+        const sound = new Audio(dingSound);
+        sound.play().catch(error => console.error("Error playing sound:", error));
+      }
+    }, [status]); // Runs when `status` changes
+
 
   const dispatch = useDispatch();
   const [videoIndex, setVideoIndex] = useState(null); // Track which video is playing
@@ -97,7 +98,7 @@ function Content() {
 
       {/* Video Content */}
       <div className='flex justify-center items-center w-[400px] h-[650px] relative'>
-        <div className="flex-1 overflow-y-auto snap-y snap-mandatory h-full mt-16 mb-12 overflow-x-hidden rounded-2xl">
+        <div className="flex-1 overflow-y-auto snap-y snap-mandatory h-full mt-16 mb-12 overflow-x-hidden">
           {videos.map((video, index) => (
             <div key={index} className="h-full flex items-center justify-center bg-gray-100 snap-start w-full">
               <div className="w-full h-full flex items-center relative">
