@@ -47,11 +47,6 @@ const TimedSpeech = ({ data }) => {
   return (
     <div className="flex flex-col items-center p-4 text-center">
       {isSpeaking && <p className="text-lg font-semibold mb-4">{data[currentIndex]?.text}</p>}
-      {!isSpeaking && (
-        <button onClick={startSpeaking} className="bg-blue-500 text-white p-2 rounded">
-          Start Speaking
-        </button>
-      )}
     </div>
   );
 };
