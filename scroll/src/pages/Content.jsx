@@ -5,7 +5,7 @@ import vid2 from '../assets/sampleVideos/sampleVideo2.mp4';
 const videos = [vid1, vid2];
 import StarryBackground from '../components/StarryBackground';
 import { useDispatch, useSelector } from "react-redux";
-import { setIsSpeaking } from "../redux/actions";
+import { setIsPaused, setIsSpeaking } from "../redux/actions";
 import TimedSpeech from '../components/TimedSpeech';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -43,6 +43,7 @@ function Content() {
   const dispatch = useDispatch();
   const [videoIndex, setVideoIndex] = useState(null); // Track which video is playing
   const isSpeaking = useSelector((state) => state.isSpeaking); // Redux state to track speaking status
+  const isPaused = useSelector((state) => state.isPaused); // Redux state to track paused status
 
   const startVideo = (index) => {
     if (!isSpeaking) { // Check if it's already speaking
@@ -83,7 +84,7 @@ function Content() {
       "image": null
     }
   ];
-
+  console.log(isPaused)
   return (
     <div className="flex h-screen w-screen overflow-hidden flex-col items-center justify-center relative">
       {/* Background */}
@@ -102,12 +103,18 @@ function Content() {
           {videos.map((video, index) => (
             <div key={index} className="h-full flex items-center justify-center bg-gray-100 snap-start w-full">
               <div className="w-full h-full flex items-center relative">
-                {/* The video player */}
                 <video
                   controls
                   autoPlay
+                  loop
                   muted
                   className="w-full h-full object-cover"
+                  onPause={() => dispatch(setIsPaused(true))}
+                  onPlay={() => {
+                    dispatch(setIsPaused(false)),
+                    startVideo(index)
+                    }
+                  }
                   onLoadedData={() => console.log(`Video ${index + 1} loaded successfully`)}
                   onError={() => console.error(`Error loading video ${index + 1}`)}
                 >
@@ -123,13 +130,7 @@ function Content() {
                 )}
 
                 {/* Start button */}
-                <div className='absolute bottom-4 w-full flex justify-center'>
-                  <button 
-                    onClick={() => startVideo(index)} // Pass the index of the video
-                    className="bg-white text-black p-3 rounded-lg shadow-md"
-                  >
-                    Start Video
-                  </button>
+                <div className='absolute top-4 w-full flex justify-center'>
 
                   {/* Timed Speech Component */}
                   {videoIndex === index && isSpeaking && (
