@@ -7,7 +7,6 @@ import vid4 from '../assets/sampleVideos/sub2.mp4';
 import vid5 from '../assets/sampleVideos/lebron.mp4';
 const videos = [vid4, vid3, vid1, vid2, vid5].sort(() => Math.random() - 0.5);
 
-import StarryBackground from '../components/StarryBackground';
 import { useDispatch, useSelector } from "react-redux";
 import { setIsPaused, setIsSpeaking } from "../redux/actions";
 import TimedSpeech from '../components/TimedSpeech';
@@ -44,12 +43,17 @@ export function Content() {
     
     const fetchTopicData = async () => {
       const segments = window.location.pathname.split('/').filter(Boolean);
-      const path = segments[1] || '';
+      const path = segments[1] && segments[1] !== "null" ? segments[1] : null;
+      let url = 'http://localhost:8080/home';
+      if (path) {
+        url += `?path=${path}`;
+      }
+        
       try {
-        const response = await fetch(`http://localhost:8080/home?path=${path}`, {
+        const response = await fetch(url, {
           method: 'GET',
           headers: {
-            'Content-Type': 'application/json'
+        'Content-Type': 'application/json'
           },
         });
         const json = await response.json();
@@ -83,39 +87,7 @@ export function Content() {
     }
   }
 
-  const testData = [
-    {
-      "text": "Let's talk about the incredible world of photosynthesis!",
-      "time": 0,
-      // A test base64 image (a small red dot PNG)
-      "image": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z/C/HwAGgwJ/lAq5VAAAAABJRU5ErkJggg=="
-    },
-    {
-      "text": "Plants use sunlight, water, and carbon dioxide...",
-      "time": 5,
-      "image": null
-    },
-    {
-      "text": "...to create their own food and release oxygen, the air we breathe.",
-      "time": 10,
-      "image": null
-    },
-    {
-      "text": "This process happens in tiny organelles called chloroplasts, found in plant cells.",
-      "time": 17,
-      "image": null
-    },
-    {
-      "text": "Inside, chlorophyll absorbs sunlight, powering the conversion of CO2 and water into sugars.",
-      "time": 23,
-      "image": null
-    },
-    {
-      "text": "Photosynthesis: the engine of life on Earth!",
-      "time": 27,
-      "image": null
-    }
-  ];
+
   console.log(isPaused)
   const [counter, setCounter] = useState(0);
 
@@ -203,19 +175,21 @@ export function Content() {
       </div>
       <div className="flex flex-1 h-screen w-screen overflow-hidden flex-col items-center justify-center relative bg-white">
 
-      {/* Video Content */}
-      <div className="flex justify-center items-center w-[400px] h-[650px] relative">
-        <div className="flex-1 overflow-y-auto snap-y snap-mandatory h-full mt-16 mb-12 overflow-x-hidden rounded-3xl scrollbar-hidden bg-black">
-          {videos.map((video, index) => (
-            <div key={index} className="h-full flex items-center justify-center bg-gray-100 snap-start w-full">
-              <div className="w-full h-full flex items-center relative rounded-3xl overflow-hidden">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  className="w-full h-full object-cover"
-                  onPause={() => dispatch(setIsPaused(true))}
-                  onPlay={() => {
+        <div className="flex justify-center items-center w-[400px] h-[650px] relative">
+          <div className="flex-1 overflow-y-auto snap-y snap-mandatory h-full mt-16 mb-12 overflow-x-hidden rounded-3xl scrollbar-hidden bg-black">
+            {videos.map((video, index) => (
+          <div key={index} className="h-full flex items-center justify-center bg-gray-100 snap-start w-full">
+            <div className="w-full h-full flex flex-col items-center relative rounded-3xl overflow-hidden">
+              <a href="/content/null" className='flex justify-center items-center'>
+                <button className='absolute z-[10] bottom-0 bg-white w-full rounded-full h-8 border-t-2 border-r border-l hover:cursor-pointer hover:bg-black hover:text-white'>Next Video?</button>
+              </a>
+              <video
+            autoPlay
+            loop
+            muted
+            className="w-full h-full object-cover"
+            onPause={() => dispatch(setIsPaused(true))}
+            onPlay={() => {
                     dispatch(setIsPaused(false));
                     startVideo(index);
                   }}
@@ -251,8 +225,6 @@ export function Content() {
                     <div className="w-12 h-12 border-t-4 border-l-4 border-green-500 border-opacity-50 rounded-full animate-spin"></div>
                   )}
                 </div>
-
-
               </div>
             </div>
           ))}
@@ -261,9 +233,11 @@ export function Content() {
 
     </div>
     <div className='flex flex-1 flex-col justify-center pr-8'>
+
         <div className='items-center text-lg font-semibold text-center bg-gray-900 text-white py-2 rounded-tl-3xl rounded-tr-3xl'>
           Distraction Counter: {counter} times
         </div>
+
       
       {/* Video Feed Overlay */}
         <img 
