@@ -237,9 +237,9 @@ export function Content() {
 
                 {/* Overlay for "Look Here" */}
                 {(status === 'Looking Left' || status === 'Looking Right') && (
-                  <div className="absolute top-0 left-0 w-full h-full bg-yellow-300 bg-opacity-75 flex items-center justify-center">
-                    <p className="text-white text-2xl font-bold">Look Here</p>
-                  </div>
+                  <div className="absolute top-0 left-0 w-full h-full bg-yellow-300 bg-opacity-75 flex items-center justify-center z-50">
+                  <p className="text-white text-2xl font-bold">Look Here</p>
+                </div>
                 )}
 
                 {/* Start button */}
