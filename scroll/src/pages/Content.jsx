@@ -248,7 +248,7 @@ export function Content() {
                   {videoIndex === index && isSpeaking && data ? (
                     <TimedSpeech data={data} />
                   ) : (
-                    <div className="w-12 h-12 border-t-4 border-l-4 border-blue-500 border-opacity-50 rounded-full animate-spin"></div>
+                    <div className="w-12 h-12 border-t-4 border-l-4 border-green-500 border-opacity-50 rounded-full animate-spin"></div>
                   )}
                 </div>
 
