@@ -1,9 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setTopic } from '../redux/actions';
 import DecryptedText from '../components/DecryptedText';
 import StarryBackground from '../components/StarryBackground';
 
 function Home() {
+  const dispatch = useDispatch();
+
+  const handleInputChange = (e) => {
+    dispatch(setTopic(e.target.value));
+  };
+
   return (
     <div className="flex flex-col h-screen w-screen items-center justify-center relative overflow-hidden">
       <StarryBackground />
@@ -21,6 +29,7 @@ function Home() {
           <input
             type="text"
             placeholder="I would like to learn about..."
+            onChange={handleInputChange}
             className="mt-3 w-[550px] p-4 border border-2 border-gray-300 text-white rounded-xl focus:outline-none"
           />
           <div className="flex space-x-4">
@@ -30,7 +39,7 @@ function Home() {
           </div>
         </div>
       </div>
-    </div> 
+    </div>
   );
 }
 

@@ -2,7 +2,8 @@ import { FaHome, FaSearch, FaPlus, FaUser } from 'react-icons/fa';
 import '../App.css';
 import vid1 from '../assets/sampleVideos/sampleVideo1.mp4';
 import vid2 from '../assets/sampleVideos/sampleVideo2.mp4';
-const videos = [vid1, vid2];
+import vid3 from '../assets/sampleVideos/minecraft.mp4';
+const videos = [vid3, vid1, vid2];
 import StarryBackground from '../components/StarryBackground';
 import { useDispatch, useSelector } from "react-redux";
 import { setIsPaused, setIsSpeaking } from "../redux/actions";
@@ -13,7 +14,7 @@ import FaceStatus from './FaceStatus';
 import dingSound from "../assets/BellSound.mp3";
 import "./Content.css";
 
-function Content() {
+export function Content() {
   const [status, setStatus] = useState('Loading...');
 
   // useEffect for fetching face status
@@ -45,6 +46,7 @@ function Content() {
   const [videoIndex, setVideoIndex] = useState(null); // Track which video is playing
   const isSpeaking = useSelector((state) => state.isSpeaking); // Redux state to track speaking status
   const isPaused = useSelector((state) => state.isPaused); // Redux state to track paused status
+  const topic = useSelector((state) => state.topic); // Redux state to track current topic
 
   const startVideo = (index) => {
     if (!isSpeaking) { // Check if it's already speaking
