@@ -140,52 +140,51 @@ export function Content() {
         <div className='flex items-center mt-6 mb-3 text-lg font-semibold'>
           Explore Topics
         </div>
-        <Link to='/content/web%20development' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
+        <Link to={`/content/web development`} className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96' onClick={() => window.location.href = `/content/web development`}>
             <FaCode size={16} className='ml-1 mr-1' />
             <div className='ml-4'>Web Development</div>
         </Link>
-        <Link to='/content/data%20structures' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
+        <Link to={`/content/data structures`} className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96' onClick={() => window.location.href = `/content/data structures`}>
           <FaCode size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Data Structures</div>
         </Link>
-        <Link to='/content/embedded%20systems' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
+        <Link to={`/content/embedded systems`} className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96' onClick={() => window.location.href = `/content/embedded systems`}>
           <FaCode size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Embedded Systems</div>
         </Link>
 
-        <Link to='/content/integral%20calculus' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
+        <Link to={`/content/integral calculus`} className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96' onClick={() => window.location.href = `/content/integral calculus`}>
           <FaCalculator size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Integral Calculus</div>
         </Link>
-        <Link to='/content/matrix%20theory' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
+        <Link to={`/content/matrix theory`} className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96' onClick={() => window.location.href = `/content/matrix theory`}>
           <FaCalculator size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Matrix Theory</div>
         </Link>
-        <Link to='/content/probability%20theory'  className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
+        <Link to={`/content/probability theory`}  className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96' onClick={() => window.location.href = `/content/probability theory`}>
           <FaCalculator size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Probability Theory</div>
         </Link>
 
-        <Link to='/content/cognitive%20behavioral%20psychology' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded'>
+        <Link to={`/content/cognitive behavioral psychology`} className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded' onClick={() => window.location.href = `/content/cognitive behavioral psychology`}>
           <FaPeopleArrows size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Cognitive Behavioral Psychology</div>
         </Link>
 
-        <Link to='/content/evolutionary%20anthropology' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded'>
+        <Link to={`/content/evolutionary anthropology`} className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded' onClick={() => window.location.href = `/content/evolutionary anthropology`}>
           <FaPeopleArrows size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Evolutionary Anthropology</div>
         </Link>
 
-        <Link to='/content/critical%20social%20theory' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded'>
+        <Link to={`/content/critical social theory`} className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded' onClick={() => window.location.href = `/content/critical social theory`}>
           <FaPeopleArrows size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Critical Social Theory</div>
         </Link>
 
-        <Link to='/content/forensic%20accounting' className='flex items-center mb-2 text-lg hover:bg-gray-200 rounded'>
+        <Link to={`/content/forensic accounting`} className='flex items-center mb-2 text-lg hover:bg-gray-200 rounded' onClick={() => window.location.href = `/content/forensic accounting`}>
           <FaMoneyBill size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Forensic Accounting</div>
         </Link>
-
 
       </div>
       <div className="flex flex-1 h-screen w-screen overflow-hidden flex-col items-center justify-center relative bg-white">
