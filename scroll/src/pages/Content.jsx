@@ -193,8 +193,6 @@ export function Content() {
 
       </div>
       <div className="flex flex-1 h-screen w-screen overflow-hidden flex-col items-center justify-center relative bg-white">
-        {/* Background */}
-      <StarryBackground />
 
       {/* Video Content */}
       <div className="flex justify-center items-center w-[400px] h-[650px] relative">

@@ -21,7 +21,7 @@ function Home() {
   };
 
   return (
-    <div className="flex flex-col h-screen w-screen items-center justify-center relative overflow-hidden">
+    <div className="flex flex-col h-screen w-screen items-center justify-center relative overflow-x-hidden">
       <StarryBackground />
       <Navbar></Navbar>
       <div className="flex flex-col items-center justify-center overflow-hidden">
