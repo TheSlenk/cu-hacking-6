@@ -13,6 +13,7 @@ import axios from 'axios';
 import FaceStatus from './FaceStatus';
 import dingSound from "../assets/BellSound.mp3";
 import "./Content.css";
+import { Link } from "react-router";
 
 export function Content() {
   const [status, setStatus] = useState('Loading...');
@@ -139,49 +140,50 @@ export function Content() {
         <div className='flex items-center mt-6 mb-3 text-lg font-semibold'>
           Explore Topics
         </div>
-        <div className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
+        <Link to='/content/programming' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
+            <FaCode size={16} className='ml-1 mr-1' />
+            <div className='ml-4'>Programming</div>
+          {/* </Link> */}
+        </Link>
+        <Link to='/content/algorithms' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
           <FaCode size={16} className='ml-1 mr-1' />
-          <div className='ml-4'>Programming</div>
-        </div>
-        <div className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
-          <FaCode size={16} className='ml-1 mr-1' />
-          <div className='ml-4'>Data Structures & Algorithms</div>
-        </div>
-        <div className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
+          <div className='ml-4'>Algorithms</div>
+        </Link>
+        <Link to='/content/embedded%20systems' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
           <FaCode size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Embedded Systems</div>
-        </div>
+        </Link>
 
-        <div className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
+        <Link to='/content/calculus' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
           <FaCalculator size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Calculus</div>
-        </div>
-        <div className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
+        </Link>
+        <Link to='/content/linear%20algebra' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
           <FaCalculator size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Linear Algebra</div>
-        </div>
-        <div className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
+        </Link>
+        <Link to='/content/statistics'  className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded w-96'>
           <FaCalculator size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Statistics</div>
-        </div>
+        </Link>
 
-        <div className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded'>
+        <Link to='/content/psychology' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded'>
           <FaPeopleArrows size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Psychology</div>
-        </div>
-        <div className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded'>
+        </Link>
+        <Link to='/content/anthropology' className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded'>
           <FaPeopleArrows size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Anthropology</div>
-        </div>
-        <div className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded'>
+        </Link>
+        <Link to='/content/sociology'  className='flex items-center mb-3 text-lg hover:bg-gray-200 rounded'>
           <FaPeopleArrows size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Sociology</div>
-        </div>
+        </Link>
 
-        <div className='flex items-center mb-2 text-lg hover:bg-gray-200 rounded'>
+        <Link to='/content/accounting' className='flex items-center mb-2 text-lg hover:bg-gray-200 rounded'>
           <FaMoneyBill size={16} className='ml-1 mr-1' />
           <div className='ml-4'>Accounting</div>
-        </div>
+        </Link>
 
       </div>
       <div className="flex flex-1 h-screen w-screen overflow-hidden flex-col items-center justify-center relative bg-white">
