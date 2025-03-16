@@ -7,7 +7,7 @@ async function generateScript(subject) {
     const PROJECT_ID = 'cu-hacking-6'
     const MODEL_ID = 'gemini-2.0-flash-001'
 
-    const prompt = `Can you make a script for an educational reel about ${subject} that is 30 seconds long and includes 3 images. Can you return the script in a json format that has 3 properties for each text, (text, time, image?) The Text is the full script, the time is at what seconds it should be played the audio, and the image is a description of an image and it is optional so you only have the image for some of them so its an optional property`
+    const prompt = `Can you make a script for an educational reel about ${subject} that is 30 seconds long and includes 3 images. Can you return the script in a json format that has 3 properties for each text, (text, time, image?) The Text is the full script, the time is at what seconds it would take for windows narrator to read the text in seconds (be generous), and the image is a description of an image and it is optional so you only have the image for some of them so its an optional property`
 
     const request = {
         "contents": [{
