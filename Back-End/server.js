@@ -1,24 +1,19 @@
 const express = require('express')
+const fs = require('fs')
+const cors = require('cors');
 const app = express()
 const {generateImage, generateScript} = require('./ai.js')
 const PORT = 8080
 
+let FILE_ID_COUNTER = fs.readdirSync('./Database').length
+
 //#region GET
-const cors = require('cors');
+
 app.use(cors());
 
 app.get('/', (req, res) => {
     res.redirect('/home')
 })
-
-app.get('/generateJsonScript', (req, res) => {
-    const inputString = req.body;
-    if (!inputString) {
-        return res.status(400).send('Missing string in request body');
-    }
-    const generatedScript = generateJsonScript(inputString);
-    res.status(200).json({ script: generatedScript });
-});
 
 app.get('/home', homePageHandler)
 //#endregion
@@ -29,8 +24,19 @@ app.listen(PORT)
 //#region Handler Functions
 async function homePageHandler(req, res) {
     const subject = req.query.path
-    const result = await generateJsonScript(subject)
-    res.status(200).send(result)
+    if (subject) {
+        const result = await generateJsonScript(subject)
+        FILE_ID_COUNTER += 1
+        await fs.writeFileSync(`Database/${FILE_ID_COUNTER}.json`, JSON.stringify(result))
+        res.status(200).send(result)
+    } else {
+        if (FILE_ID_COUNTER > 0) {
+            const content = await fs.readFileSync(`Database/${getRandomInt(1, FILE_ID_COUNTER)}.json`, 'utf-8')
+            res.status(200).send(JSON.parse(content))
+        } else {
+            res.status(404).send('No presaved video')
+        }
+    }
 }
 //#endregion
 
@@ -66,5 +72,9 @@ function parseJsonScript(jsonScript) {
     jsonScript = jsonScript.replaceAll('```json', '')
     jsonScript = jsonScript.replaceAll('```', '')
     return JSON.parse(jsonScript)
+}
+
+function getRandomInt(min, max) {
+    return Math.round(Math.random() * (max - min) + min)
 }
 //#endregion

@@ -1,5 +1,4 @@
 const fs = require('fs')
-const { exec } = require('child_process')
 const { error } = require('console')
 
 async function generateScript(subject) {
