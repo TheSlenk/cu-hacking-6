@@ -14,7 +14,7 @@ const TimedSpeech = ({ data }) => {
 
   // Function to start the speech process
   const startSpeaking = () => {
-    dispatch({ type: "SET_IS_SPEAKING", payload: true });
+    dispatch({ type: "SET_IS_SPEAKING", payload:   true });
     dispatch({ type: "SET_IS_PAUSED", payload: false });
     setCurrentIndex(0);
   };
@@ -58,7 +58,8 @@ const TimedSpeech = ({ data }) => {
 
   useEffect(() => {
     if (currentIndex >= data.length) {
-      dispatch({ type: "SET_IS_SPEAKING", payload: false });
+      setCurrentIndex(0);
+      // dispatch({ type: "SET_IS_SPEAKING", payload: false });
     }
   }, [currentIndex, data.length, dispatch]);
 
