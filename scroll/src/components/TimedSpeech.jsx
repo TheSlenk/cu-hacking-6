@@ -52,7 +52,12 @@ const TimedSpeech = ({ data }) => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (!isSpeaking || currentIndex >= data.length) return;
+    if (!isSpeaking) {
+      return;
+    }
+    if (currentIndex >= data.length) {
+      setCurrentIndex(0);
+    }
 
     if (isPaused) {
       clearTimeout(timeoutRef.current);
@@ -69,7 +74,7 @@ const TimedSpeech = ({ data }) => {
     }
 
     const previousTime = data[currentIndex - 1]?.time || 0;
-    const delay = (data[currentIndex]?.time - previousTime) * 1000 || 2000;
+    const delay = data[currentIndex]?.time * 1100 || 3000;
 
     timeoutRef.current = setTimeout(() => {
       if (!isPaused) {

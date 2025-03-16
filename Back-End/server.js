@@ -4,6 +4,9 @@ const {generateImage, generateScript} = require('./ai.js')
 const PORT = 8080
 
 //#region GET
+const cors = require('cors');
+app.use(cors());
+
 app.get('/', (req, res) => {
     res.redirect('/home')
 })
@@ -17,7 +20,7 @@ app.get('/generateJsonScript', (req, res) => {
     res.status(200).json({ script: generatedScript });
 });
 
-app.post('/home', homePageHandler)
+app.get('/home', homePageHandler)
 //#endregion
 
 console.log(`Listening on port ${PORT}...`)
@@ -25,7 +28,8 @@ app.listen(PORT)
 
 //#region Handler Functions
 async function homePageHandler(req, res) {
-    const result = await generateJsonScript('Math')
+    const subject = req.query.path
+    const result = await generateJsonScript(subject)
     res.status(200).send(result)
 }
 //#endregion

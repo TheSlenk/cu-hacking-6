@@ -46,10 +46,16 @@ export function Content() {
       const segments = window.location.pathname.split('/').filter(Boolean);
       const path = segments[1] || '';
       try {
-        const response = await fetch(`http://localhost:8080/home?path=${path}`);
+        const response = await fetch(`http://localhost:8080/home?path=${path}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        });
         const json = await response.json();
-        console.log("Fetched topic data:", json);
         setData(json);
+
+
         console.log("Fetching topic data for path:", path);
         // Add additional handling for the fetched data here if needed
       } catch (error) {
