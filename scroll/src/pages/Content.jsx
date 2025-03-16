@@ -1,4 +1,4 @@
-import { FaHome, FaSearch, FaPlus, FaUser } from 'react-icons/fa';
+import { FaHome, FaSearch, FaPlus, FaUser, FaBars, FaHistory, FaCode, FaCalculator, FaPeopleArrows, FaMoneyBill } from 'react-icons/fa';
 import '../App.css';
 import vid1 from '../assets/sampleVideos/sampleVideo1.mp4';
 import vid2 from '../assets/sampleVideos/sampleVideo2.mp4';
@@ -90,11 +90,80 @@ export function Content() {
   console.log(isPaused)
   return (
     <div className='flex'>
-    <div className='flex flex-1'>
-      lhs
-    </div>
-    <div className="flex flex-1 h-screen w-screen overflow-hidden flex-col items-center justify-center relative bg-red-500">
-      {/* Background */}
+      <div className='flex flex-col flex-1 ml-6 mt-6'>
+        <div className='flex mb-8 items-center'>
+          <FaBars size={24} />
+          <div className='ml-4 text-2xl font-semibold'>Scroll.Ai</div>
+        </div>
+        <div className='flex items-center mb-3 text-lg'>
+          <FaHome size={16} className='ml-1 mr-1' />
+          <div className='ml-4'>Home</div>
+        </div>
+        <div className='flex items-center mb-3 text-lg'>
+          <FaSearch size={16} className='ml-1 mr-1' />
+          <div className='ml-4'>Search</div>
+        </div>
+        <div className='flex items-center mb-3 text-lg'>
+          <FaHistory size={16} className='ml-1 mr-1' />
+          <div className='ml-4'>History</div>
+        </div>
+
+        <div className='flex items-center mt-6 mb-3 text-lg font-semibold'>
+          Explore Topics
+        </div>
+        <div className='flex items-center mb-3 text-lg'>
+          <FaCode size={16} className='ml-1 mr-1' />
+          <div className='ml-4'>Programming</div>
+        </div>
+        <div className='flex items-center mb-3 text-lg'>
+          <FaCode size={16} className='ml-1 mr-1' />
+          <div className='ml-4'>Data Structures & Algorithms</div>
+        </div>
+        <div className='flex items-center mb-3 text-lg'>
+          <FaCode size={16} className='ml-1 mr-1' />
+          <div className='ml-4'>Embedded Systems</div>
+        </div>
+
+        <div className='flex items-center mb-3 text-lg'>
+          <FaCalculator size={16} className='ml-1 mr-1' />
+          <div className='ml-4'>Calculus</div>
+        </div>
+        <div className='flex items-center mb-3 text-lg'>
+          <FaCalculator size={16} className='ml-1 mr-1' />
+          <div className='ml-4'>Linear Algebra</div>
+        </div>
+        <div className='flex items-center mb-3 text-lg'>
+          <FaCalculator size={16} className='ml-1 mr-1' />
+          <div className='ml-4'>Statistics</div>
+        </div>
+
+        <div className='flex items-center mb-3 text-lg'>
+          <FaPeopleArrows size={16} className='ml-1 mr-1' />
+          <div className='ml-4'>Psychology</div>
+        </div>
+        <div className='flex items-center mb-3 text-lg'>
+          <FaPeopleArrows size={16} className='ml-1 mr-1' />
+          <div className='ml-4'>Anthropology</div>
+        </div>
+        <div className='flex items-center mb-3 text-lg'>
+          <FaPeopleArrows size={16} className='ml-1 mr-1' />
+          <div className='ml-4'>Sociology</div>
+        </div>
+
+        <div className='flex items-center mb-2 text-lg'>
+          <FaMoneyBill size={16} className='ml-1 mr-1' />
+          <div className='ml-4'>Accounting</div>
+        </div>
+
+
+        
+        
+
+        
+
+      </div>
+      <div className="flex flex-1 h-screen w-screen overflow-hidden flex-col items-center justify-center relative bg-red-500">
+        {/* Background */}
       <StarryBackground />
 
       {/* Video Content */}
@@ -158,12 +227,12 @@ export function Content() {
         <FaUser size={24} />
       </div> */}
     </div>
-    <div className='flex flex-1 justify-center items-center'>
+    <div className='flex flex-1 justify-center'>
       {/* Video Feed Overlay */}
       <img 
           src="http://localhost:5000/video_feed" 
           alt="Webcam Feed" 
-          className="w-full object-cover rounded-lg"
+          className="w-full h-full object-cover rounded-lg"
         />
     </div>
     </div>
