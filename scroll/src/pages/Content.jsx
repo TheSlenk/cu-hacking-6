@@ -1,9 +1,11 @@
 import { FaHome, FaSearch, FaPlus, FaUser, FaBars, FaHistory, FaCode, FaCalculator, FaPeopleArrows, FaMoneyBill } from 'react-icons/fa';
 import '../App.css';
-import vid1 from '../assets/sampleVideos/sampleVideo1.mp4';
-import vid2 from '../assets/sampleVideos/sampleVideo2.mp4';
-import vid3 from '../assets/sampleVideos/minecraft.mp4';
-const videos = [vid3, vid1, vid2];
+import vid1 from '../assets/sampleVideos/minecraft.mp4';
+import vid2 from '../assets/sampleVideos/minecraft2.mp4';
+import vid3 from '../assets/sampleVideos/sub1.mp4';
+import vid4 from '../assets/sampleVideos/sub2.mp4';
+
+const videos = [vid1, vid2, vid3, vid4];
 import StarryBackground from '../components/StarryBackground';
 import { useDispatch, useSelector } from "react-redux";
 import { setIsPaused, setIsSpeaking } from "../redux/actions";
